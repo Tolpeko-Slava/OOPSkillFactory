@@ -13,6 +13,8 @@ namespace OOP
         }
     }
 
+    //hell
+
     abstract class Delivery
     {
         public string Address;
