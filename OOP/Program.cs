@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,48 +9,47 @@ namespace OOP
 {
     internal class Program
     {
+        static WorkWithOrder workWithOrder;
+
         static void Main(string[] args)
         {
-        }
-    }
+            workWithOrder = new WorkWithOrder();
 
-    //hell
+            Order order;
+            string orderString;
+            int choose;
+            bool flagCycle;
 
-    abstract class Delivery
-    {
-        public string Address;
-    }
+            Console.WriteLine("Приветствую вы можете сделать заказ:");
+            Console.WriteLine("1) На машину");
+            Console.WriteLine("2) В ресторан(-е)");
 
-    class HomeDelivery : Delivery
-    {
-        /* ... */
-    }
+            do
+            {
+                Console.Write("Выберете какой вид заказа вас интересует:");
+                orderString = Console.ReadLine();
+                flagCycle = Verification.StrToInt(orderString, out choose);
+                if (flagCycle)
+                {
+                    flagCycle = Verification.IntMoreZero(choose);
+                }
+                if (flagCycle)
+                {
+                    flagCycle = choose < 3 && choose > 0 ? true : false;
+                }
+            }
+            while (!flagCycle);
 
-    class PickPointDelivery : Delivery
-    {
-        /* ... */
-    }
 
-    class ShopDelivery : Delivery
-    {
-        /* ... */
-    }
+            order = workWithOrder.ChoseOrder(orderString);
 
-    class Order<TDelivery,
-    TStruct> where TDelivery : Delivery
-    {
-        public TDelivery Delivery;
+            order.CreateOrder();
 
-        public int Number;
-
-        public string Description;
-
-        public void DisplayAddress()
-        {
-            Console.WriteLine(Delivery.Address);
+            order.PrintOrder();
         }
 
-        // ... Другие поля
+        
+
     }
 
 }

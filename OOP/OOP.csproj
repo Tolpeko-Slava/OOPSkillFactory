@@ -43,8 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.cs" />
+    <Compile Include="Deliver\HomeDelivery.cs" />
+    <Compile Include="Deliver\ShopDelivery.cs" />
+    <Compile Include="Order\CarOrder.cs" />
+    <Compile Include="Deliver\Delivery.cs" />
+    <Compile Include="Order\Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Order\RestoranOrder.cs" />
+    <Compile Include="Order\WorkWithOrder.cs" />
+    <Compile Include="Verification.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
